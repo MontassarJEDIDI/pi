@@ -2,14 +2,14 @@ FROM maven:3.9.9-eclipse-temurin-17 AS build
 
 WORKDIR /build
 
-COPY pom.xml ./pom.xml
-COPY discovery-service/pom.xml ./discovery-service/pom.xml
+COPY pom.xml pom.xml
+COPY discovery-service/pom.xml discovery-service/pom.xml
 
-RUN mvn -pl discovery-service -am dependency:go-offline
+WORKDIR /build/discovery-service
+RUN mvn -B -q -DskipTests dependency:go-offline
 
-COPY discovery-service/src ./discovery-service/src
-
-RUN mvn -pl discovery-service -am clean package -DskipTests
+COPY discovery-service/src src
+RUN mvn -B -DskipTests package
 
 FROM eclipse-temurin:17-jre
 

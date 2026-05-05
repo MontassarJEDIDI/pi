@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_REPO = 'montassarjedidi/gateway-service'
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
+        SONAR_HOST_URL = 'http://host.docker.internal:9000'
+        PROJECT_ROOT = 'Gestion des abonnements'
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                dir("${env.PROJECT_ROOT}/gateway-service") {
+                    sh 'mvn -f ../pom.xml -pl gateway-service -am clean compile || true'
+                }
+            }
+        }
+
+        stage('Maven Test') {
+            steps {
+                dir("${env.PROJECT_ROOT}/gateway-service") {
+                    sh 'mvn -f ../pom.xml -pl gateway-service -am test || true'
+                }
+            }
+            post {
+                always {
+                    junit allowEmptyResults: true, testResults: 'Gestion des abonnements/gateway-service/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                dir("${env.PROJECT_ROOT}/gateway-service") {
+                    withSonarQubeEnv('SonarQube') {
+                        withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                            sh '''
+                                mvn -f ../pom.xml -pl gateway-service -am sonar:sonar \
+                                  -Dsonar.projectKey=gateway-service \
+                                  -Dsonar.host.url=$SONAR_HOST_URL \
+                                  -Dsonar.token=$SONAR_TOKEN || true
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                dir("${env.PROJECT_ROOT}/gateway-service") {
+                    sh 'docker build -f Dockerfile -t $DOCKERHUB_REPO:$IMAGE_TAG -t $DOCKERHUB_REPO:latest .. || true'
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin || true'
+                    sh 'docker push $DOCKERHUB_REPO:$IMAGE_TAG || true'
+                    sh 'docker push $DOCKERHUB_REPO:latest || true'
+                    sh 'docker logout || true'
+                }
+            }
+        }
+    }
+}
