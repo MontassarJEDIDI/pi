@@ -1,0 +1,70 @@
+.dossier-container {
+  padding: 8px 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dossier-hero {
+  margin-bottom: 4px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.info-card {
+  border-radius: 22px;
+
+  mat-card-header {
+    padding: 22px 22px 0;
+
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--pn-primary-dark);
+      font-size: 1.05rem;
+      font-weight: 800;
+
+      mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+        color: var(--pn-primary);
+      }
+    }
+  }
+
+  mat-card-content {
+    padding: 18px 22px 22px;
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--pn-border);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .label {
+        font-weight: 700;
+        color: var(--pn-text-muted);
+      }
+
+      .value {
+        color: var(--pn-text);
+        font-weight: 600;
+      }
+    }
+
+    p {
+      margin: 0;
+      color: var(--pn-text);
+      line-height: 1.6;
+    }
+  }
+}

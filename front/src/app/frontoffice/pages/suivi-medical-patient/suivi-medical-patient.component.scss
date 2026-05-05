@@ -1,0 +1,64 @@
+.suivi-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    color: #1976d2;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+  }
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+.info-card {
+  mat-card-header {
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #1976d2;
+
+      mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  mat-card-content {
+    .date-value,
+    .evolution-value {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #333;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+}

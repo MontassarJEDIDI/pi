@@ -1,0 +1,92 @@
+.consultations-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    color: #1976d2;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+  }
+}
+
+.consultations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.consultation-card {
+  mat-card-header {
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #1976d2;
+
+      mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    mat-card-subtitle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      color: #666;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  mat-card-content {
+    .consultation-info {
+      margin-bottom: 16px;
+
+      .info-item {
+        display: flex;
+        padding: 8px 0;
+        gap: 16px;
+
+        .label {
+          font-weight: 500;
+          color: #666;
+          min-width: 100px;
+        }
+
+        .value {
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+mat-chip {
+  &.terminee {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  &.planifiee {
+    background-color: #ff9800;
+    color: white;
+  }
+}

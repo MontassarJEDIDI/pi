@@ -1,0 +1,142 @@
+.renewal-page {
+  padding-bottom: 28px;
+}
+
+.page-head {
+  h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 6px 0 0;
+  }
+}
+
+.head-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.proposal-head {
+  margin-bottom: 12px;
+}
+
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  mat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    color: var(--pn-primary);
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 900;
+  }
+}
+
+.muted-small {
+  color: var(--pn-text-muted);
+  font-size: 0.85rem;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.plan-box {
+  padding: 16px;
+  border-radius: var(--pn-radius);
+  border: 1px solid var(--pn-border);
+  background: var(--pn-surface-muted);
+}
+
+.label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--pn-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.value {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.price {
+  display: block;
+  margin-top: 4px;
+  color: var(--pn-text-muted);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--pn-text-muted);
+}
+
+.delta {
+  margin: 6px 0 12px;
+  color: var(--pn-text);
+}
+
+.justification {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: var(--pn-radius);
+  border: 1px solid var(--pn-border);
+  background: rgba(15, 23, 42, 0.03);
+  margin-bottom: 14px;
+
+  mat-icon {
+    color: var(--pn-primary);
+  }
+
+  p {
+    margin: 0;
+    color: var(--pn-text-muted);
+    line-height: 1.6;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+@media (max-width: 720px) {
+  .plans {
+    grid-template-columns: 1fr;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+

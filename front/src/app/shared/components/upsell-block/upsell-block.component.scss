@@ -1,0 +1,68 @@
+.upsell-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border: 1px dashed #adb5bd;
+  text-align: center;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+
+  .lock-icon {
+    font-size: 3rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+    background: #fff;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .upsell-title {
+    font-size: 1.5rem;
+    color: #212529;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .upsell-description {
+    color: #495057;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+
+  .upsell-badge {
+    background-color: #ffe066;
+    color: #866200;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+    font-weight: 500;
+  }
+
+  .upgrade-btn {
+    background: linear-gradient(135deg, #FFB800 0%, #FF8A00 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(255, 138, 0, 0.3);
+    }
+  }
+}

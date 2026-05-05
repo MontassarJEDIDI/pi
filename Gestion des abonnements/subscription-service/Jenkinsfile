@@ -1,0 +1,78 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_REPO = 'montassarjedidi/subscription-service'
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
+        SONAR_HOST_URL = 'http://host.docker.internal:9000'
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                dir('subscription-service') {
+                    sh 'mvn -f ../pom.xml -pl subscription-service -am clean compile'
+                }
+            }
+        }
+
+        stage('Maven Test') {
+            steps {
+                dir('subscription-service') {
+                    sh 'mvn -f ../pom.xml -pl subscription-service -am test'
+                }
+            }
+            post {
+                always {
+                    junit 'subscription-service/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                dir('subscription-service') {
+                    withSonarQubeEnv('SonarQube') {
+                        withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                            sh '''
+                                mvn -f ../pom.xml -pl subscription-service -am sonar:sonar \
+                                  -Dsonar.projectKey=subscription-service \
+                                  -Dsonar.host.url=$SONAR_HOST_URL \
+                                  -Dsonar.token=$SONAR_TOKEN
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                dir('subscription-service') {
+                    sh 'docker build -f Dockerfile -t $DOCKERHUB_REPO:$IMAGE_TAG -t $DOCKERHUB_REPO:latest ..'
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
+                    sh 'docker push $DOCKERHUB_REPO:$IMAGE_TAG'
+                    sh 'docker push $DOCKERHUB_REPO:latest'
+                    sh 'docker logout'
+                }
+            }
+        }
+    }
+}

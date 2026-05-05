@@ -1,0 +1,40 @@
+.forums-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    color: #1976d2;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+  }
+}
+
+mat-card {
+  mat-card-content {
+    text-align: center;
+    padding: 40px;
+
+    p {
+      margin-bottom: 24px;
+      color: #666;
+      font-size: 1.1rem;
+    }
+
+    button {
+      mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}

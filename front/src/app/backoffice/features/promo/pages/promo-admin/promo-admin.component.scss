@@ -1,0 +1,22 @@
+.promo-form {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.8fr 0.8fr 0.9fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.promo-hero .page-subtitle {
+  max-width: 680px;
+}
+
+@media (max-width: 980px) {
+  .promo-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .promo-form button {
+    grid-column: 1 / -1;
+  }
+}
+

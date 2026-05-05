@@ -1,0 +1,90 @@
+.subscription-form-page {
+  padding: 8px 0 24px;
+  max-width: 920px;
+}
+
+.form-hero {
+  padding: 26px 28px;
+}
+
+.hero-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.form-card-shell {
+  border-radius: 24px !important;
+}
+
+mat-card-content {
+  padding: 28px !important;
+}
+
+.error-message {
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border-radius: 16px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.info-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border-radius: 16px;
+  background: var(--pn-primary-soft);
+  color: var(--pn-primary-dark);
+  border: 1px solid rgba(0, 119, 182, 0.12);
+}
+
+.hint-error {
+  color: #b91c1c;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+
+  mat-form-field {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .full-width {
+    flex: 1 1 100%;
+  }
+
+  mat-slide-toggle {
+    margin: 10px 0 2px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--pn-border);
+}
+
+@media (max-width: 768px) {
+  .hero-head {
+    flex-direction: column;
+  }
+
+  mat-card-content {
+    padding: 20px !important;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+}

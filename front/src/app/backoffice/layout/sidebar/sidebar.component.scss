@@ -1,0 +1,115 @@
+.sidebar {
+  width: 240px;
+  background: #cfe8f9;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.logo {
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #9ccbf1;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #7bb3e0;
+    }
+  }
+  
+  li {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #334155;
+    
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      color: #64748b;
+      transition: color 0.2s;
+    }
+
+    &:hover {
+      background: #e0f2fe;
+      color: #0284c7;
+      
+      mat-icon {
+        color: #0284c7;
+      }
+    }
+    
+    &.active {
+      background: #0284c7;
+      color: white;
+      font-weight: 500;
+      box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2);
+      
+      mat-icon {
+        color: white;
+      }
+    }
+  }
+}
+
+.settings {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #334155;
+  transition: all 0.2s;
+  
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: #64748b;
+  }
+  
+  &:hover {
+    background: #e0f2fe;
+    color: #0284c7;
+    
+    mat-icon {
+      color: #0284c7;
+    }
+  }
+}

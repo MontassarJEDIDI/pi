@@ -1,0 +1,47 @@
+.examens-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    color: #1976d2;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+  }
+}
+
+.examens-table {
+  width: 100%;
+
+  th {
+    font-weight: 600;
+    color: #1976d2;
+  }
+
+  .statut-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    &.normal {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    &.anormal {
+      background-color: #f44336;
+      color: white;
+    }
+  }
+}

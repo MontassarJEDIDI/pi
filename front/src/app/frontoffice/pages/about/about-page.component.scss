@@ -1,0 +1,131 @@
+.about-section {
+  background-color: #bbdefb; /* Light Blue background from screenshot */
+  min-height: 100vh; /* Make it a full page feel */
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.about-header {
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  text-align: right;
+  z-index: 10;
+  
+  @media (max-width: 960px) {
+    position: relative;
+    top: auto;
+    right: auto;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+}
+
+.section-title {
+  font-size: 56px;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  color: #000;
+  font-family: sans-serif; /* Clean sans-serif */
+  animation: slideInDown 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dots-decoration {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  .dot-row {
+    display: flex;
+    gap: 8px;
+    
+    span {
+      width: 4px;
+      height: 4px;
+      background-color: #555;
+      border-radius: 50%;
+      display: block;
+    }
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* Image wider */
+  gap: 80px;
+  align-items: center;
+  margin-top: 40px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.about-image-wrapper {
+  position: relative;
+  animation: fadeIn 1.5s ease-out;
+  
+  .about-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    /* In screenshot, image is cut on left, but for web page let's keep it contained or use negative margin */
+  }
+  
+  /* The grey overlay block effect from screenshot */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 100px;
+    height: 100%;
+    background-color: rgba(255,255,255,0.2);
+    z-index: -1;
+  }
+}
+
+.about-text-content {
+  padding-right: 20px;
+
+  p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 25px;
+    font-weight: 400;
+  }
+  
+  .explore-btn {
+    background-color: #000 !important;
+    color: #fff !important;
+    padding: 22px 50px !important;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    border-radius: 0 !important; /* Sharp corners */
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+}
